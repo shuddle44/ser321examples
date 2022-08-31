@@ -49,6 +49,28 @@ task runFraction(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
 
   main = 'Fraction'
+
+  args '1'
+  args '2'
+}
+
+// task that runs the Fraction Main with arguments accepted by name: gradle runFrac
+task runFrac(type: JavaExec) {
+  group 'Fraction Tasks'
+  description 'Tasks which runs Fraction with default parameters or given values'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Fraction'
+
+  args '1'
+  args '2'
+
+    if (project.hasProperty("Pdenom") && project.hasProperty("Pnum")) {
+    args(project.getProperty('Pdenom'), project.getProperty('Pnum'));
+  } else if (project.hasProperty("Pdenom")){
+    args(project.getProperty('Pdenom'), 1);
+  }
 }
 
 // Try:
