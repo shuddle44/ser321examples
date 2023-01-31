@@ -19,6 +19,7 @@ public class TCPServer {
             System.out.println("port must be integer");
             System.exit(2);
         }
+		//make a connection
 		try {
 			listenSocket = new ServerSocket(portNo); // initialize a server socket listening for connections from portNo
 			while(true) { // Loop for server socket to accept new connections as they are received
@@ -27,6 +28,7 @@ public class TCPServer {
 			}
 		} catch(IOException e) {
 			System.out.println("Listen socket:"+e.getMessage());
+		//if not empty and not closed, close
 		} finally {
 			if (listenSocket != null && listenSocket.isClosed()) {
 				try {
